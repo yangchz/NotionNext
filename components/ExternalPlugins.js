@@ -4,6 +4,7 @@ import { GlobalStyle } from './GlobalStyle'
 import LA51 from './LA51'
 import TianLiGPT from './TianliGPT'
 import WebWhiz from './Webwhiz'
+import Umami from './Umami'
 
 import { convertInnerUrl } from '@/lib/notion/convertInnerUrl'
 import { isBrowser, loadExternalResource } from '@/lib/utils'
@@ -39,6 +40,7 @@ const ExternalPlugin = props => {
   )
   const CAN_COPY = siteConfig('CAN_COPY')
   const WEB_WHIZ_ENABLED = siteConfig('WEB_WHIZ_ENABLED')
+  const UMAMI_ENABLED = siteConfig('UMAMI_ENABLED')
   const AD_WWADS_BLOCK_DETECT = siteConfig('AD_WWADS_BLOCK_DETECT')
   const CHATBASE_ID = siteConfig('CHATBASE_ID')
   const COMMENT_DAO_VOICE_ID = siteConfig('COMMENT_DAO_VOICE_ID')
@@ -143,6 +145,7 @@ const ExternalPlugin = props => {
       {CUSTOM_RIGHT_CLICK_CONTEXT_MENU && <CustomContextMenu {...props} />}
       {!CAN_COPY && <DisableCopy />}
       {WEB_WHIZ_ENABLED && <WebWhiz />}
+      {UMAMI_ENABLED && <Umami />}
       {AD_WWADS_BLOCK_DETECT && <AdBlockDetect />}
       {TIANLI_KEY && <TianLiGPT />}
       <VConsole />
