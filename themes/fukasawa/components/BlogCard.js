@@ -64,7 +64,7 @@ const {siteInfo} =useGlobal()
 
         {/* 文字部分 */}
         <div className='flex flex-col w-full'>
-          <h2>
+          <div>
             <Link
               passHref
               href={post?.href}
@@ -74,7 +74,7 @@ const {siteInfo} =useGlobal()
               )}{' '}
               {post.title}
             </Link>
-          </h2>
+          </div>
 
           {(!showPreview || showSummary) && (
             <main className='my-2 tracking-wide line-clamp-3 text-gray-800 dark:text-gray-300 text-md font-light leading-6'>
