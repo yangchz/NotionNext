@@ -186,7 +186,7 @@ function renderPrismMac(codeLineNumbers) {
       Array.from(codeBlocks).forEach(item => {
         if (!item.classList.contains('line-numbers')) {
           item.classList.add('line-numbers')
-          item.style.whiteSpace = 'pre-wrap'
+          // item.style.whiteSpace = 'pre-wrap'
         }
       })
     }
