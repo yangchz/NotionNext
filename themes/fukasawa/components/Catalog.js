@@ -58,11 +58,23 @@ const Catalog = ({ toc }) => {
   if (!toc || toc?.length < 1) {
     return <></>
   }
+  const tocLevelCnt = [0, 0, 0, 0, 0, 0, 0]
   return <div id='catalog' className='flex-1 flex-col flex overflow-hidden'>
     <div className='w-full dark:text-gray-300 mb-2'><i className='mr-1 fas fa-stream' />{locale.COMMON.TABLE_OF_CONTENTS}</div>
     <nav ref={tRef} className='flex-1 overflow-auto  overscroll-none scroll-hidden   text-black mb-6'>
       {toc.map((tocItem) => {
         const id = uuidToId(tocItem.id)
+        const curLevel = tocItem.indentLevel
+        let title = tocItem.text
+        if (curLevel < tocLevelCnt.length) {
+          // add cur level cnt
+          tocLevelCnt[curLevel] = tocLevelCnt[curLevel] + 1
+          title = `${tocLevelCnt.slice(0, curLevel + 1).join('.')} ${title}`
+          // reset sub levels cnt
+          for (let i = curLevel + 1; i < tocLevelCnt.length; i++) {
+            tocLevelCnt[i] = 0
+          }
+        }
         return (
           <a
             key={id}
@@ -72,9 +84,9 @@ const Catalog = ({ toc }) => {
           >
             <span style={{ display: 'inline-block', marginLeft: tocItem.indentLevel * 16 }}
               className={`truncate ${activeSection === id ? 'font-bold text-red-400 underline' : ''}`}
-              title={tocItem.text}
+              title={title}
             >
-              {tocItem.text}
+              {title}
             </span>
           </a>
         )
