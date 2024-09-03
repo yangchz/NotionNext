@@ -213,7 +213,13 @@ const LayoutArchive = props => {
  * @returns
  */
 const Layout404 = props => {
-  return <>404</>
+  return (
+    <>
+      <div className='w-full h-96 py-80 flex justify-center items-center'>
+        404 Not found.
+      </div>
+    </>
+  )
 }
 
 /**
